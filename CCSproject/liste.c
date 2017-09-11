@@ -7,6 +7,7 @@
 
 #include "liste.h"
 #include "operande.h"
+#include "protoAss.h"
 
 void obtenirType(int * liste)
 {
@@ -105,29 +106,30 @@ void obtenirOperation(int * liste)
 	else
 	{
 		printf("Mauvaise entrée\r\n");
-		obtenirFormat(liste);
+		obtenirOperation(liste);
 	}
 }
-int convertirListe(int  liste[3])
+int convertirListe(int *liste)
 {
-    return(liste[0] + liste[1]);
+    return(10 * liste[0] + liste[1]);
 }
 
-void analyserListe(int liste[3])
+void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *TabFloat)
 {
     int choix = convertirListe(liste);
-    switch(liste[3])
+    switch(liste[2])
     {
         case 1:
             if(choix == 12)
             {
-                choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
-                addEntierNonSigne32bits(unsigned int TabIntNoS[2]);
+                choisirOperandesIntNoS(TabIntNoS);
+                unsigned int resultat = AddEntierNonSigne32bits(TabIntNoS);
+                printf("Resultat : %u", resultat);
             }
             else if(choix == 22)
             {
-                choisirOperandesIntS(int TabIntS[2]);
-                addEntierSigne32bits(int TabIntS[2]);
+                choisirOperandesIntS(TabIntS);
+                AddEntierSigne32bits(TabIntS);
             }
             else if(choix == 32)
             {
@@ -138,35 +140,37 @@ void analyserListe(int liste[3])
             {
                 printf("erreur");
             }
+            break;
         case 2:
             if(choix == 12)
             {
-                choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
+                choisirOperandesIntNoS(TabIntNoS);
                 //subEntierNonSigne32bits(ZZZ *TabXXX)
             }
             else if(choix == 22)
             {
-                choisirOperandesIntS(int TabIntS[2]);
+                choisirOperandesIntS(TabIntS);
                 //subEntierSigne32bits(ZZZ *TabXXX)
             }
             else if(choix == 44)
             {
-                choisirOperandesFloat(float TabFloat[2]);
+                choisirOperandesFloat(TabFloat);
                 //subFlottant64bits(ZZZ *TabXXX)
             }
             else
             {
                 printf("erreur");
             }
+            break;
         case 3:
             if(choix == 12)
             {
-                /choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
+                choisirOperandesIntNoS(TabIntNoS);
                 //MpyEntierNonSigneOp32bitsRes64bits(ZZZ *TabXXX)
             }
             else if(choix == 22)
             {
-                choisirOperandesIntS(int TabIntS[2]);
+                choisirOperandesIntS(TabIntS);
                 //MpyEntierSigneOp32bitsRes64bits(ZZZ *TabXXX)
             }
             else if(choix == 32)
@@ -176,24 +180,26 @@ void analyserListe(int liste[3])
             }
             else if(choix == 44)
             {
-                choisirOperandesFloat(float TabFloat[2]);
+                choisirOperandesFloat(TabFloat);
                 //MpyFlottant64bits(ZZZ *TabXXX)
             }
             else
             {
                 printf("erreur");
             }
+            break;
       //  case 4:
 
         case 5:
             if(choix == 22)
             {
-                choisirOperandesIntS(int TabIntS[2]);
+                choisirOperandesIntS(TabIntS);
                 //EncrypterDonnees(int * TabDonnees)
             }
             else
             {
-                prinft("erreur");
+                printf("erreur");
             }
+            break;
 }
 }

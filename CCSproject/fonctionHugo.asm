@@ -26,7 +26,7 @@
 
 	.def _AddEntierNonSigne32bits
 	.def _AddEntierSigne32bits
-	.def _AddFractionnaire32bits;_Q7.24_Q15.16
+	.def _AddFractionnaire32bits_Q724_Q1516
 	.def _EncrypterDonnees
 ;	.def _EncrypterDonneesTest
 
@@ -48,9 +48,10 @@ _AddEntierNonSigne32bits
 
 
 	LDW *A4,A5
+	LDW *A4[1],A6
 	NOP 4
 
-	ADDU A5,++A5,A5:A4
+	ADDU A5,A6,A5:A4
 
 
 	MVKL satH,A6
@@ -79,7 +80,7 @@ _AddEntierSigne32bits
 	.endasmfunc
 
 
-_AddFractionnaire32bits;_Q7.24_Q15.16
+_AddFractionnaire32bits_Q724_Q1516
 	.asmfunc
 
 

@@ -13,14 +13,20 @@ void TaMEre();
 
 
 int main(void) {
-	int liste[3];
-    obtenirType(&liste[0]);
-    obtenirFormat(&liste[1]);
-    analyserListe(liste);
+    while(1)
+    {
+        int liste[3];
+        unsigned int TabIntNoS[2];
+        int TabIntS[2];
+        float TabFloat[2];
+        obtenirType(&liste[0]);
+        obtenirFormat(&liste[1]);
+        obtenirOperation(&liste[2]);
+        analyserListe(liste, TabIntNoS, TabIntS, TabFloat);
 
-    printf("%d", liste[0]);
-    printf("%d", liste[1]);
-    printf("%d", liste[2]);
-
+        printf("%d", liste[0]);
+        printf("%d", liste[1]);
+        printf("%d", liste[2]);
+    }
 	return 0;
 }

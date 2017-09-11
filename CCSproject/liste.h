@@ -13,8 +13,8 @@
 void obtenirType(int * liste);
 void obtenirFormat(int * liste);
 void obtenirOperation(int *liste);
-int convertirListe(int  liste[3]);
-void analyserListe(int liste[3]);
+int convertirListe(int *liste);
+void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *TabFloat);
 
 
 

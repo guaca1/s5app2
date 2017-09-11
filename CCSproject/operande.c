@@ -7,25 +7,26 @@
 
 
 #include "operande.h"
+#include "protoAss.h"
 
-void choisirOperandesIntNoS(unsigned int TabIntNoS[2])
+void choisirOperandesIntNoS(unsigned int* TabIntNoS)
 {
     printf("quels sont les valeurs à traiter");
     scanf("%u", TabIntNoS[0]);
     scanf("%u", TabIntNoS[1]);
 
 }
-void choisirOperandesIntS(int TabIntS[2])
+void choisirOperandesIntS(int* TabIntS)
 {
     printf("quels sont les valeurs à traiter");
-    scanf("%d", TabIntNoS[0]);
-    scanf("%d", TabIntNoS[1]);
+    scanf("%d", TabIntS[0]);
+    scanf("%d", TabIntS[1]);
 }
 
-choisirOperandesFloat(float TabFloat[2])
+void choisirOperandesFloat(float* TabFloat)
 {
-    printf("quels sont les valeurs à traiter");
-    scanf("%f", TabIntNoS[0]);
-    scanf("%f", TabIntNoS[1]);
+    printf("quelles sont les valeurs à traiter");
+    scanf("%f", TabFloat[0]);
+    scanf("%f", TabFloat[1]);
 }
 
