@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "liste.h"
+#include "operande.h"
 
 //Fonction Asm
 void TaMEre();

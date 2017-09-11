@@ -6,6 +6,7 @@
 */
 
 #include "liste.h"
+#include "operande.h"
 
 void obtenirType(int * liste)
 {
@@ -120,13 +121,13 @@ void analyserListe(int liste[3])
         case 1:
             if(choix == 12)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //addEntierNonSigne32bits(ZZZ *TabXXX)
+                choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
+                addEntierNonSigne32bits(unsigned int TabIntNoS[2]);
             }
             else if(choix == 22)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //addEntierSigne32bits(ZZZ *TabXXX)
+                choisirOperandesIntS(int TabIntS[2]);
+                addEntierSigne32bits(int TabIntS[2]);
             }
             else if(choix == 32)
             {
@@ -140,17 +141,17 @@ void analyserListe(int liste[3])
         case 2:
             if(choix == 12)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
+                choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
                 //subEntierNonSigne32bits(ZZZ *TabXXX)
             }
             else if(choix == 22)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
+                choisirOperandesIntS(int TabIntS[2]);
                 //subEntierSigne32bits(ZZZ *TabXXX)
             }
             else if(choix == 44)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
+                choisirOperandesFloat(float TabFloat[2]);
                 //subFlottant64bits(ZZZ *TabXXX)
             }
             else
@@ -160,12 +161,12 @@ void analyserListe(int liste[3])
         case 3:
             if(choix == 12)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
+                /choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
                 //MpyEntierNonSigneOp32bitsRes64bits(ZZZ *TabXXX)
             }
             else if(choix == 22)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
+                choisirOperandesIntS(int TabIntS[2]);
                 //MpyEntierSigneOp32bitsRes64bits(ZZZ *TabXXX)
             }
             else if(choix == 32)
@@ -175,7 +176,7 @@ void analyserListe(int liste[3])
             }
             else if(choix == 44)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
+                choisirOperandesFloat(float TabFloat[2]);
                 //MpyFlottant64bits(ZZZ *TabXXX)
             }
             else
@@ -187,7 +188,7 @@ void analyserListe(int liste[3])
         case 5:
             if(choix == 22)
             {
-                //choisirDonnees(int *tabDonnees)
+                choisirOperandesIntS(int TabIntS[2]);
                 //EncrypterDonnees(int * TabDonnees)
             }
             else
