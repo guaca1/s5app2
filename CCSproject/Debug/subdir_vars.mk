@@ -6,7 +6,9 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 ASM_SRCS += \
-../test.asm 
+../Mpy.asm \
+../div.asm \
+../sub.asm 
 
 C_SRCS += \
 ../liste.c \
@@ -17,30 +19,40 @@ C_DEPS += \
 ./main.d 
 
 OBJS += \
+./Mpy.obj \
+./div.obj \
 ./liste.obj \
 ./main.obj \
-./test.obj 
+./sub.obj 
 
 ASM_DEPS += \
-./test.d 
+./Mpy.d \
+./div.d \
+./sub.d 
 
 OBJS__QUOTED += \
+"Mpy.obj" \
+"div.obj" \
 "liste.obj" \
 "main.obj" \
-"test.obj" 
+"sub.obj" 
 
 C_DEPS__QUOTED += \
 "liste.d" \
 "main.d" 
 
 ASM_DEPS__QUOTED += \
-"test.d" 
+"Mpy.d" \
+"div.d" \
+"sub.d" 
+
+ASM_SRCS__QUOTED += \
+"../Mpy.asm" \
+"../div.asm" \
+"../sub.asm" 
 
 C_SRCS__QUOTED += \
 "../liste.c" \
 "../main.c" 
-
-ASM_SRCS__QUOTED += \
-"../test.asm" 
 
 

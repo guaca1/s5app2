@@ -13,7 +13,8 @@
 void obtenirType(int * liste);
 void obtenirFormat(int * liste);
 void obtenirOperation(int *liste);
-int convertirListe(int * liste1, int * liste2);
+int convertirListe(int  liste[3]);
+void analyserListe(int liste[3]);
 
 
 
