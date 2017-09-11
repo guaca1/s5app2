@@ -23,10 +23,7 @@ int main(void) {
         obtenirFormat(&liste[1]);
         obtenirOperation(&liste[2]);
         analyserListe(liste, TabIntNoS, TabIntS, TabFloat);
-
-        printf("%d", liste[0]);
-        printf("%d", liste[1]);
-        printf("%d", liste[2]);
+        printf("\n");
     }
 	return 0;
 }
