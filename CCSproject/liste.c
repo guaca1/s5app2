@@ -107,3 +107,92 @@ void obtenirOperation(int * liste)
 		obtenirFormat(liste);
 	}
 }
+int convertirListe(int  liste[3])
+{
+    return(liste[0] + liste[1]);
+}
+
+void analyserListe(int liste[3])
+{
+    int choix = convertirListe(liste);
+    switch(liste[3])
+    {
+        case 1:
+            if(choix == 12)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //addEntierNonSigne32bits(ZZZ *TabXXX)
+            }
+            else if(choix == 22)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //addEntierSigne32bits(ZZZ *TabXXX)
+            }
+            else if(choix == 32)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //addFractionnaire32bits_Q7.24_Q15.16(ZZZ *TabXXX)
+            }
+            else
+            {
+                printf("erreur");
+            }
+        case 2:
+            if(choix == 12)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //subEntierNonSigne32bits(ZZZ *TabXXX)
+            }
+            else if(choix == 22)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //subEntierSigne32bits(ZZZ *TabXXX)
+            }
+            else if(choix == 44)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //subFlottant64bits(ZZZ *TabXXX)
+            }
+            else
+            {
+                printf("erreur");
+            }
+        case 3:
+            if(choix == 12)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //MpyEntierNonSigneOp32bitsRes64bits(ZZZ *TabXXX)
+            }
+            else if(choix == 22)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //MpyEntierSigneOp32bitsRes64bits(ZZZ *TabXXX)
+            }
+            else if(choix == 32)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //MpyFractionnaireOp32bitsRes64bits_Q7.24_Q15.16(ZZZ *TabXXX)
+            }
+            else if(choix == 44)
+            {
+                //choisirOperandeXXX(ZZZ *tabXXX)
+                //MpyFlottant64bits(ZZZ *TabXXX)
+            }
+            else
+            {
+                printf("erreur");
+            }
+      //  case 4:
+
+        case 5:
+            if(choix == 22)
+            {
+                //choisirDonnees(int *tabDonnees)
+                //EncrypterDonnees(int * TabDonnees)
+            }
+            else
+            {
+                prinft("erreur");
+            }
+}
+}
