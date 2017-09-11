@@ -1,6 +1,6 @@
 	.def _MpyEntierNonSigneOp32bitsRes64bits
 	.def _MpyEntierSigneOp32bitsRes64bits
-	.def _MpyfractionnaireOp32bitsRes64bits_Q724_Q1516
+	.def _MpyFractionnaireOp32bitsRes64bits_Q724_Q1516
 	.def _MpyFlottant64bits
 
 
@@ -11,7 +11,9 @@
 _MpyEntierNonSigneOp32bitsRes64bits
 	.asmfunc
 
-
+	LDW *A4[1], B4
+	LDW *A4, A4
+	NOP 4
 	MPYU	A4, B4, A10		; LSHW0 * LSHW1
 	MPYHLU 	A4, B4, A11 	; MSHW0 * LSHW1
 	MPYLHU	A4, B4, A12		; MSHW1 * LSHW0
@@ -63,7 +65,7 @@ _MpyEntierSigneOp32bitsRes64bits
 
 	.endasmfunc
 
-_MpyfractionnaireOp32bitsRes64bits_Q724_Q1516
+_MpyFractionnaireOp32bitsRes64bits_Q724_Q1516
 	.asmfunc
 	; Load the two operands
 	LDW *A4++, A6
@@ -73,6 +75,9 @@ _MpyfractionnaireOp32bitsRes64bits_Q724_Q1516
 
 	MPYID A6, A8, A5:A4 ;Multipy two 32bits into one 64bits
 	NOP 9
+
+	SHL A5, 1, A5
+	SHL A4, 1, A4
 
 	B B3
 	NOP 5

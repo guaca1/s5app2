@@ -10,9 +10,13 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Mpy.obj" \
+"./div.obj" \
+"./fonctionHugo.obj" \
 "./liste.obj" \
 "./main.obj" \
-"./test.obj" \
+"./operande.obj" \
+"./sub.obj" \
 "../targetConfigs/C6713dsk.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -160,9 +164,9 @@ APP2.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "liste.obj" "main.obj" "test.obj" 
-	-$(RM) "liste.d" "main.d" 
-	-$(RM) "test.d" 
+	-$(RM) "Mpy.obj" "div.obj" "fonctionHugo.obj" "liste.obj" "main.obj" "operande.obj" "sub.obj" 
+	-$(RM) "liste.d" "main.d" "operande.d" 
+	-$(RM) "Mpy.d" "div.d" "fonctionHugo.d" "sub.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

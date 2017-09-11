@@ -1,5 +1,5 @@
 	.def _SubEntierNonSigne32bits
-	.def _SubEntierSigne32
+	.def _SubEntierSigne32bits
 	.def _SubFlottant64bits
 
 _SubEntierNonSigne32bits:
@@ -19,7 +19,7 @@ _SubEntierNonSigne32bits:
 	 .endasmfunc
 
 
-_SubEntierSigne32:
+_SubEntierSigne32bits:
 	.asmfunc
 
 	MVKL 0x0000FDFF, B7

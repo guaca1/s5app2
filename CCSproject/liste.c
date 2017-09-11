@@ -5,7 +5,10 @@
  *      Author: Guacamole
 */
 
+#include <math.h>
 #include "liste.h"
+#include "operande.h"
+#include "protoAss.h"
 
 void obtenirType(int * liste)
 {
@@ -104,95 +107,132 @@ void obtenirOperation(int * liste)
 	else
 	{
 		printf("Mauvaise entrée\r\n");
-		obtenirFormat(liste);
+		obtenirOperation(liste);
 	}
 }
-int convertirListe(int  liste[3])
+int convertirListe(int *liste)
 {
-    return(liste[0] + liste[1]);
+    return(10 * liste[0] + liste[1]);
 }
 
-void analyserListe(int liste[3])
+void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *TabFloat, double *TabDouble, int *TabDonnees)
 {
     int choix = convertirListe(liste);
-    switch(liste[3])
+    switch(liste[2])
     {
         case 1:
             if(choix == 12)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //addEntierNonSigne32bits(ZZZ *TabXXX)
+                choisirOperandesIntNoS(TabIntNoS);
+                unsigned int resultat = AddEntierNonSigne32bits(TabIntNoS);
+                printf("Resultat : %u\r\n", resultat);
             }
             else if(choix == 22)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //addEntierSigne32bits(ZZZ *TabXXX)
+                choisirOperandesIntS(TabIntS);
+                int resultat = AddEntierSigne32bits(TabIntS);
+                printf("Resultat : %d\r\n", resultat);
             }
             else if(choix == 32)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //addFractionnaire32bits_Q7.24_Q15.16(ZZZ *TabXXX)
+                choisirOperandes_Q724_Q1516(TabIntS);
+                int resultat = AddFractionnaire32bits_Q724_Q1516(TabIntS);
+                float resultatFrac = resultat / pow(2, 16);
+                printf("Resultat : %f\r\n", resultatFrac);
+                //TODO : Faire en sorte qu'il y ait une sélection Q7.24 ou Q15.16 pour avoir la plus grande précision
             }
             else
             {
-                printf("erreur");
+                printf("erreur\r\n");
             }
+            break;
         case 2:
             if(choix == 12)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //subEntierNonSigne32bits(ZZZ *TabXXX)
+                choisirOperandesIntNoS(TabIntNoS);
+                unsigned int resultat = SubEntierNonSigne32bits(TabIntNoS);
+                printf("Resultat : %u\r\n", resultat);
             }
             else if(choix == 22)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //subEntierSigne32bits(ZZZ *TabXXX)
+                choisirOperandesIntS(TabIntS);
+                int resultat = SubEntierSigne32bits(TabIntS);
+                printf("Resultat : %d", resultat);
             }
             else if(choix == 44)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //subFlottant64bits(ZZZ *TabXXX)
+                choisirOperandesDouble(TabDouble);
+                double resultat = SubFlottant64bits(TabDouble);
+                printf("Resultat : %lf", resultat);
             }
             else
             {
                 printf("erreur");
             }
+            break;
         case 3:
             if(choix == 12)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //MpyEntierNonSigneOp32bitsRes64bits(ZZZ *TabXXX)
+                choisirOperandesIntNoS(TabIntNoS);
+                unsigned long long resultat = MpyEntierNonSigneOp32bitsRes64bits(TabIntNoS);
+                printf("Resultat : %llu", resultat);
             }
             else if(choix == 22)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //MpyEntierSigneOp32bitsRes64bits(ZZZ *TabXXX)
+                choisirOperandesIntS(TabIntS);
+                int resultat = MpyEntierSigneOp32bitsRes64bits(TabIntS);
+                printf("Resultat : %d\r\n", resultat);
             }
             else if(choix == 32)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //MpyFractionnaireOp32bitsRes64bits_Q7.24_Q15.16(ZZZ *TabXXX)
+                choisirOperandes_Q724_Q1516(TabIntS);
+                long long resultat = MpyFractionnaireOp32bitsRes64bits_Q724_Q1516(TabIntS);
+                double resultatFrac = resultat / pow(2, 41);
+                printf("Resultat : %lf\r\n", resultatFrac);
             }
             else if(choix == 44)
             {
-                //choisirOperandeXXX(ZZZ *tabXXX)
-                //MpyFlottant64bits(ZZZ *TabXXX)
+                choisirOperandesDouble(TabDouble);
+                double resultat = MpyFlottant64bits(TabDouble);
+                printf("Resultat : %lf\r\n", resultat);
             }
             else
             {
-                printf("erreur");
+                printf("erreur\r\n");
             }
-      //  case 4:
+            break;
+        case 4:
+            if(choix == 12)
+            {
+                choisirOperandesIntNoS(TabIntNoS);
+                unsigned int resultatInc = DivIncrementation(TabIntNoS);
+                unsigned int resultatSub = DivSubc(TabIntNoS);
+                printf("Resultat (Incrementation) : %u\r\n", resultatInc);
+                printf("Resultat (Subc) : %u\r\n", resultatSub);
+            }
+            else if(choix == 42)
+            {
+                choisirOperandesFloat(TabFloat);
+                float resultat = DivFlottant32bits(TabFloat);
+                printf("Resultat : %f\r\n", resultat);
+            }
+            else
+            {
+                printf("erreur\r\n");
+            }
+            break;
 
         case 5:
             if(choix == 22)
             {
-                //choisirDonnees(int *tabDonnees)
-                //EncrypterDonnees(int * TabDonnees)
+                ChoisirDonnees(TabDonnees);
+                EncrypterDonnees(TabDonnees);
+                printf("Les données ont été encryptées avec succès. Pour avoir accès à vos données, veuillez déposer 1000$ en BitCoins à l'adresse 0x000234F1A98EDC\r\n");
             }
             else
             {
-                prinft("erreur");
+                printf("erreur\r\n");
             }
-}
+            break;
+    }
 }

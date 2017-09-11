@@ -6,41 +6,65 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 ASM_SRCS += \
-../test.asm 
+../Mpy.asm \
+../div.asm \
+../fonctionHugo.asm \
+../sub.asm 
 
 C_SRCS += \
 ../liste.c \
-../main.c 
+../main.c \
+../operande.c 
 
 C_DEPS += \
 ./liste.d \
-./main.d 
+./main.d \
+./operande.d 
 
 OBJS += \
+./Mpy.obj \
+./div.obj \
+./fonctionHugo.obj \
 ./liste.obj \
 ./main.obj \
-./test.obj 
+./operande.obj \
+./sub.obj 
 
 ASM_DEPS += \
-./test.d 
+./Mpy.d \
+./div.d \
+./fonctionHugo.d \
+./sub.d 
 
 OBJS__QUOTED += \
+"Mpy.obj" \
+"div.obj" \
+"fonctionHugo.obj" \
 "liste.obj" \
 "main.obj" \
-"test.obj" 
+"operande.obj" \
+"sub.obj" 
 
 C_DEPS__QUOTED += \
 "liste.d" \
-"main.d" 
+"main.d" \
+"operande.d" 
 
 ASM_DEPS__QUOTED += \
-"test.d" 
+"Mpy.d" \
+"div.d" \
+"fonctionHugo.d" \
+"sub.d" 
+
+ASM_SRCS__QUOTED += \
+"../Mpy.asm" \
+"../div.asm" \
+"../fonctionHugo.asm" \
+"../sub.asm" 
 
 C_SRCS__QUOTED += \
 "../liste.c" \
-"../main.c" 
-
-ASM_SRCS__QUOTED += \
-"../test.asm" 
+"../main.c" \
+"../operande.c" 
 
 
