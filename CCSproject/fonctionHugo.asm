@@ -71,9 +71,17 @@ _AddEntierSigne32bits
 	.asmfunc
 
 	LDW *A4,A5
+	LDW *A4[1],A6
 	NOP 4
 
-	SADD A5,++A5,A4
+	MVKL 0x0000FDFF, B7
+	MVKH 0x0000FDFF, B7
+
+	SADD A5, A6, A4
+	MVC CSR, B5
+	AND B5, B7, B5
+	MVC B5, CSR
+
 
 	B B3 ; INDISPENSABLE ; B3 contient l'adresse de retour
     NOP 5
@@ -85,9 +93,8 @@ _AddFractionnaire32bits_Q724_Q1516
 
 
 
-	LDW *A4++,A5
-	NOP 4
-	LDW *A4,A6
+	LDW *A4,A5
+	LDW *A4[1],A6
 	NOP 4
 
 	SHR A5,8,A7 ;decale vers la droite pour convertir le Q7.24 en Q15.16

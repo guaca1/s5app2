@@ -3,9 +3,12 @@
 
 #include <stdio.h>
 
-void choisirOperandesIntNoS(unsigned int TabIntNoS[2]);
-void choisirOperandesIntS(int TabIntS[2]);
-void choisirOperandesFloat(float TabFloat[2]);
+void choisirOperandesIntNoS(unsigned int *TabIntNoS);
+void choisirOperandesIntS(int *TabIntS);
+void choisirOperandesFloat(float *TabFloat);
+void choisirOperandesDouble(double *TabFloat);
+void choisirOperandes_Q724_Q1516(int *TabInt);
+void ChoisirDonnees(int *TabDonnees);
 
 
 
