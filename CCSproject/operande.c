@@ -9,6 +9,11 @@
 #include "operande.h"
 #include "protoAss.h"
 
+/*Choisir les operandes
+Entree      : tableau du bon type
+Sortie      : rien
+Fonction    : Demande les valeurs a traiter, entre les valeurs dans le tableau donne*/
+
 
 void choisirOperandesIntNoS(unsigned int* TabIntNoS)
 {

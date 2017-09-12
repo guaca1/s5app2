@@ -12,6 +12,7 @@
 
 void obtenirType(int * liste)
 {
+    //Menu d'utilisateur
 	printf("Quel est le type de donnée (entrez le numero) :\r\n");
 	printf("1. Entier non signé \r\n");
 	printf("2. Entier signé \r\n");
@@ -19,6 +20,7 @@ void obtenirType(int * liste)
 	printf("4. Flottant \r\n");
 	scanf("%d", liste);
 	
+	//ecrit la selection
 	if (*liste == 1)
 	{
 		printf("Entier non signé \r\n");
@@ -44,6 +46,7 @@ void obtenirType(int * liste)
 
 void obtenirFormat(int * liste)
 {
+    //Menu d'utilisateur
 	printf("Quel est le format de donnée (entrez le numero) :\r\n");
 	printf("1. 16 bits \r\n");
 	printf("2. 32 bits \r\n");
@@ -51,6 +54,7 @@ void obtenirFormat(int * liste)
 	printf("4. 64 bits \r\n");
 	scanf("%d", liste);
 	
+	//ecrit la selection
 	if (*liste == 1)
 	{
 		printf("16 bits \r\n");
@@ -76,6 +80,7 @@ void obtenirFormat(int * liste)
 
 void obtenirOperation(int * liste)
 {
+    //Menu d'utilisateur
 	printf("Quel est l'opération désirée (entrez le numero) :\r\n");
 	printf("1. + \r\n");
 	printf("2. - \r\n");
@@ -84,6 +89,7 @@ void obtenirOperation(int * liste)
 	printf("5. Encrypter \r\n");
 	scanf("%d", liste);
 	
+	//ecrit la selection
 	if (*liste == 1)
 	{
 		printf("addition \r\n");
@@ -112,28 +118,28 @@ void obtenirOperation(int * liste)
 }
 int convertirListe(int *liste)
 {
-    return(10 * liste[0] + liste[1]);
+    return(10 * liste[0] + liste[1]); // retourne les deux entree sous un entier
 }
 
 void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *TabFloat, double *TabDouble, int *TabDonnees)
 {
     int choix = convertirListe(liste);
-    switch(liste[2])
+    switch(liste[2])    //switch operation demandee
     {
         case 1:
-            if(choix == 12)
+            if(choix == 12) //unsigned entier 32 bits
             {
                 choisirOperandesIntNoS(TabIntNoS);
                 unsigned int resultat = AddEntierNonSigne32bits(TabIntNoS);
                 printf("Resultat : %u\r\n", resultat);
             }
-            else if(choix == 22)
+            else if(choix == 22)    //entier 32 bits
             {
                 choisirOperandesIntS(TabIntS);
                 int resultat = AddEntierSigne32bits(TabIntS);
                 printf("Resultat : %d\r\n", resultat);
             }
-            else if(choix == 32)
+            else if(choix == 32)    //fractionnaire 32 bits
             {
                 choisirOperandes_Q724_Q1516(TabIntS);
                 int resultat = AddFractionnaire32bits_Q724_Q1516(TabIntS);
@@ -147,19 +153,19 @@ void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *Tab
             }
             break;
         case 2:
-            if(choix == 12)
+            if(choix == 12) //unsigned entier 32 bits
             {
                 choisirOperandesIntNoS(TabIntNoS);
                 unsigned int resultat = SubEntierNonSigne32bits(TabIntNoS);
                 printf("Resultat : %u\r\n", resultat);
             }
-            else if(choix == 22)
+            else if(choix == 22)    //entier 32 bits
             {
                 choisirOperandesIntS(TabIntS);
                 int resultat = SubEntierSigne32bits(TabIntS);
                 printf("Resultat : %d", resultat);
             }
-            else if(choix == 44)
+            else if(choix == 44)    //flottant 64 bits
             {
                 choisirOperandesDouble(TabDouble);
                 double resultat = SubFlottant64bits(TabDouble);
@@ -171,26 +177,26 @@ void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *Tab
             }
             break;
         case 3:
-            if(choix == 12)
+            if(choix == 12) ////unsigned entier 32 bits
             {
                 choisirOperandesIntNoS(TabIntNoS);
                 unsigned long long resultat = MpyEntierNonSigneOp32bitsRes64bits(TabIntNoS);
                 printf("Resultat : %llu", resultat);
             }
-            else if(choix == 22)
+            else if(choix == 22)    //entier 32 bits
             {
                 choisirOperandesIntS(TabIntS);
                 int resultat = MpyEntierSigneOp32bitsRes64bits(TabIntS);
                 printf("Resultat : %d\r\n", resultat);
             }
-            else if(choix == 32)
+            else if(choix == 32)    //fractionnaire 32 bits
             {
                 choisirOperandes_Q724_Q1516(TabIntS);
                 long long resultat = MpyFractionnaireOp32bitsRes64bits_Q724_Q1516(TabIntS);
                 double resultatFrac = resultat / pow(2, 41);
                 printf("Resultat : %lf\r\n", resultatFrac);
             }
-            else if(choix == 44)
+            else if(choix == 44)    //flottant 64 bits
             {
                 choisirOperandesDouble(TabDouble);
                 double resultat = MpyFlottant64bits(TabDouble);
@@ -202,7 +208,7 @@ void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *Tab
             }
             break;
         case 4:
-            if(choix == 12)
+            if(choix == 12) //unsigned entier 32 bits
             {
                 choisirOperandesIntNoS(TabIntNoS);
                 unsigned int resultatInc = DivIncrementation(TabIntNoS);
@@ -210,7 +216,7 @@ void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *Tab
                 printf("Resultat (Incrementation) : %u\r\n", resultatInc);
                 printf("Resultat (Subc) : %u\r\n", resultatSub);
             }
-            else if(choix == 42)
+            else if(choix == 42)    //flottant 32 bits
             {
                 choisirOperandesFloat(TabFloat);
                 float resultat = DivFlottant32bits(TabFloat);
@@ -223,7 +229,7 @@ void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *Tab
             break;
 
         case 5:
-            if(choix == 22)
+            if(choix == 22) //entier 32 bits
             {
                 ChoisirDonnees(TabDonnees);
                 EncrypterDonnees(TabDonnees);
