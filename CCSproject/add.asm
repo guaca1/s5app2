@@ -84,11 +84,11 @@ _AddEntierNonSigne32bits
 _AddEntierSigne32bits
 	.asmfunc
 
-	LDW *A4,A5
-	LDW *A4[1],A5
+	LDW *A4,A6
+	LDW *A4[1],A8
 	NOP 4
 
-	SADD A5,++A5,A4
+	SADD A6, A8,A4
 
 	MVKL 0xFFFFFDFF, B7
 	MVKH 0xFFFFFDFF, B7
@@ -127,9 +127,8 @@ _AddEntierSigne32bits
 _AddFractionnaire32bits_Q724_Q1516
 	.asmfunc
 
-	LDW *A4++,A5
-	NOP 4
-	LDW *A4,A6
+	LDW *A4,A5
+	LDW *A4[1],A6
 	NOP 4
 
 	EXT A5,0,8,A7; Decale vers la droite pour convertir le Q7.24 en Q15.16 et fait l'extention de signe
