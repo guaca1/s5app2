@@ -31,9 +31,15 @@ _DivIncrementation:
 	LDW *A4, A6
 	LDW *A4[1], A8
 	NOP 4
-	CMPEQ A8, 0, A1
+	MV A8, A1
+	[!A1] ZERO A4
+	[!A1] B ENDDIV1
+	NOP 5
+
+	CMPGT A8, A6, A1 ;If the denominator is greater than the numerator, we can skip to the remain calculation part
 	[A1] ZERO A4
-	[A1] B ENDDIV1
+	[A1] MV A6, A0
+	[A1] B CHECKREMAIN2
 	NOP 5
 
 	; Shift the denominator to the left so its MSB is aligned with the numerator's MSB
@@ -57,6 +63,7 @@ LOOPDIV1:
 	NOP 5
 
 	; Verify if the remain is bigger than half the denominator
+CHECKREMAIN1:
 	SHL A6, 1, A0
 	CMPGTU A0, A8, A2
 	[A2] ADD A4, 1, A4
@@ -98,9 +105,15 @@ _DivSubc:
 	NOP 4
 
 	; if the denominator is 0, return 0
-	CMPEQ A8, 0, A1
+	MV A8, A1
+	[!A1] ZERO A4
+	[!A1] B ENDDIV2
+	NOP 5
+
+	CMPGT A8, A6, A1 ;If the denominator is greater than the numerator, we can skip to the remain calculation part
 	[A1] ZERO A4
-	[A1] B ENDDIV2
+	[A1] MV A6, A0
+	[A1] B CHECKREMAIN2
 	NOP 5
 
 	; Shift the denominator to the left so its MSB is aligned with the numerator's MSB
@@ -113,8 +126,8 @@ _DivSubc:
 
 ; Substract and shift until the division is over (B1 == 0)
 LOOPDIV2:
-	SUBC A6, A10, A6
-	SUB B1, 1, B1
+	[B1] SUBC A6, A10, A6
+	[B1] SUB B1, 1, B1
 	[B1] B LOOPDIV2
 	NOP 5
 
@@ -124,6 +137,7 @@ LOOPDIV2:
 	CLR A6, A10, A4 ; Clear bits between 31 and A9's value, so that only the result of the division remains
 
 	SHRU A6, A9, A0 ; The left part corresponds to the remaining value
+CHECKREMAIN2:
 	SHL A0, 1, A0; Multiply it by 2
 	CMPGTU A0, A8, A2 ; if the left part x2 is greater that the denominator, then we add 1 to the result
 	[A2] ADD A4, 1, A4
