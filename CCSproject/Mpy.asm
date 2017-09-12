@@ -86,4 +86,11 @@ _MpyFractionnaireOp32bitsRes64bits_Q724_Q1516
 _MpyFlottant64bits
 	.asmfunc
 
+	LDDW *A4, A7:A6
+	LDDW *A4[1], A9:A8
+	NOP 4
+
+	MPYDP A7:A6, A9:A8, A5:A4
+	NOP 9
+
 	.endasmfunc
