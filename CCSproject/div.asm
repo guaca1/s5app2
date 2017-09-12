@@ -4,15 +4,14 @@
 
 
 _DivIncrementation:
-; TODO : Faire en sorte qu'une valeur avec un MSB de 1 fonctionne (E.g 0xFFFFFFFF)
 	.asmfunc
 
+	; Load the data
 	LDW *A4, A6
 	LDW *A4[1], A8
 	NOP 4
 	CMPEQ A8, 0, A1
-	[A1] MVKL 0, A4
-	[A1] MVKH 0, A4
+	[A1] ZERO A4
 	[A1] B ENDDIV1
 	NOP 5
 
@@ -24,8 +23,7 @@ _DivIncrementation:
 	ADD A9, 1, A9
 	MV A9, B1
 
-	MVKL 0, A4
-	MVKH 0, A4
+	ZERO A4
 
 LOOPDIV1:
 	SUB B1, 1, B1
@@ -37,6 +35,7 @@ LOOPDIV1:
 	[B1] B LOOPDIV1
 	NOP 5
 
+	; Verify if the remain is bigger than half the denominator
 	SHL A6, 1, A0
 	CMPGTU A0, A8, A2
 	[A2] ADD A4, 1, A4
@@ -47,7 +46,6 @@ ENDDIV1:
 	.endasmfunc
 
 _DivSubc:
-; TODO : Faire en sorte qu'une valeur avec un MSB de 1 fonctionne (E.g 0xFFFFFFFF)
 	.asmfunc
 
 	; Load the two operands
@@ -57,8 +55,7 @@ _DivSubc:
 
 	; if the denominator is 0, return 0
 	CMPEQ A8, 0, A1
-	[A1] MVKL 0, A4
-	[A1] MVKH 0, A4
+	[A1] ZERO A4
 	[A1] B ENDDIV2
 	NOP 5
 
@@ -103,9 +100,9 @@ _DivFlottant32bits:
 	LDW *A4, A8
 	NOP 4
 
-	RCPSP A8, A8
+	RCPSP A8, A8 ;Calculate the inverse of the denominator (1/den)
 	NOP 1
-	MPYSP A8, A6, A4
+	MPYSP A8, A6, A4 ;Mulitply the inverse with the numerator (num/den = num * 1/den)
 	NOP 3
 
 	B B3

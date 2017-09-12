@@ -6,11 +6,8 @@
 
 #include "liste.h"
 #include "operande.h"
-
-//Fonction Asm
-void TaMEre();
-
-
+static int TabDonneesGlobal[8];
+#pragma DATA_ALIGN(TabDonneesGlobal, 32)
 
 int main(void) {
     while(1)
@@ -20,11 +17,10 @@ int main(void) {
         int TabIntS[2];
         float TabFloat[2];
         double TabDouble[2];
-        int TabDonnees[8];
         obtenirType(&liste[0]);
         obtenirFormat(&liste[1]);
         obtenirOperation(&liste[2]);
-        analyserListe(liste, TabIntNoS, TabIntS, TabFloat, TabDouble, TabDonnees);
+        analyserListe(liste, TabIntNoS, TabIntS, TabFloat, TabDouble, TabDonneesGlobal);
         printf("\n");
     }
 	return 0;
