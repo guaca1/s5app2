@@ -7,9 +7,9 @@ setAMR .word 0x00800080 ;BK1
 
 	.text
 
-; fonctionsHugo.asm
+; add.asm
 ;
-; Créateur :   Hugo Daniel
+; Créateur :   HD - DDF - FLF
 ; Date :     10 septembre 2017
 ; Revision :
 ;
@@ -20,17 +20,21 @@ setAMR .word 0x00800080 ;BK1
 ;    Encrypte des données avec un XOR, le tout dans un tampon circulaire de manière a réencrypter les données
 ;
 ; ENTRÉES :
-;    tableau: Tableau des entiers sur 32-bit signe a additionner
+;
 ;
 ;
 ; ENTRÉES/SORTIES :
-;
+;		tableau: Tableau des entiers sur 32-bit signe a additionner
 ;
 ; SORTIES :
 ;
 
 _EncrypterDonnees
 	.asmfunc
+
+	;Save the context of the AMR
+	MVC AMR, B0
+	STW B15++[2], B0
 
 	MVKL nbTours,B1
 	MVKH nbTours,B1
@@ -60,6 +64,10 @@ LOOPE: ;Loop servant a encrypter
 	[A1] SUB B2,1,B2
 	[B2] B LOOPE
 	NOP 5
+
+	LDW --B15[2], B0
+	NOP 4
+	MVC B0, AMR
 
 	B B3 ; INDISPENSABLE ; B3 contient l'adresse de retour
     NOP 5

@@ -3,6 +3,7 @@
 	.def _AddFractionnaire32bits_Q724_Q1516
 
 	.data
+
 satH .word 0xFFFFFFFF
 satL .word 0x00000000
 CSRSATCheck .word 0x00000200
@@ -11,9 +12,9 @@ CSRSATCheck .word 0x00000200
 	.text
 
 
-; fonctionsHugo.asm
+; add.asm
 ;
-; Créateur :   Hugo Daniel
+; Créateur :   HD - DDF - FLF
 ; Date :     10 septembre 2017
 ; Revision :
 ;
@@ -58,9 +59,9 @@ _AddEntierNonSigne32bits
     NOP 5
 	.endasmfunc
 
-; fonctionsHugo.asm
+; add.asm
 ;
-; Créateur :   Hugo Daniel
+; Créateur :   HD - DDF - FLF
 ; Date :     10 septembre 2017
 ; Revision :
 ;
@@ -100,9 +101,9 @@ _AddEntierSigne32bits
     NOP 5
 	.endasmfunc
 
-; fonctionsHugo.asm
+; add.asm
 ;
-; Créateur :   Hugo Daniel
+; Créateur :   HD - DDF - FLF
 ; Date :     10 septembre 2017
 ; Revision :
 ;

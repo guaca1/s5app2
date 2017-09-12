@@ -2,6 +2,30 @@
 	.def _SubEntierSigne32bits
 	.def _SubFlottant64bits
 
+
+; sub.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;    int AddEntierNonSigne32bits(int *TabDonnees)
+;
+; DESCRIPTION :
+;    La fonction prend des entiers 32-bit non signees en entree et les soustrait.
+;	 La soustraction ne s'effectue pas si le résultat est <= 0, mais retourne simplement 0
+;
+; ENTRÉES :
+;    tableau: Tableau des entiers sur 32-bit non signe a soustraire
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la soustraction sur 32-bit en valeur entiere non signee
+
 _SubEntierNonSigne32bits:
 	.asmfunc
 
@@ -12,12 +36,34 @@ _SubEntierNonSigne32bits:
 
 	CMPLTU A6, A8, A1
 	[!A1] SUBU A6, A8, A5:A4 ;If operand1 > operand2, make the substraction
-	[A1]  MVK 0, A4 ;else, saturate it to 0
+	[A1]  ZERO A4 ;else, saturate it to 0
+	[A1]  ZERO A5
 
 	 B B3
 	 NOP 5
 	 .endasmfunc
 
+; sub.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;    int SubEntierSigne32bits(int* TabIntS)
+;
+; DESCRIPTION :
+;    La fonction prend des entiers 32-bit signes en entree et les soustrait. Il y a saturation, mais elle n'est pas gérée (i.e aucun code d'erreur)
+;
+; ENTRÉES :
+;    tableau: Tableau des entiers sur 32-bit signe a soustraire
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la soustraction sur 32-bit en valeur entiere signee
 
 _SubEntierSigne32bits:
 	.asmfunc
@@ -40,6 +86,28 @@ _SubEntierSigne32bits:
 	 B B3
 	 NOP 5
 	 .endasmfunc
+
+; sub.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;    double SubFlottant64bits(double* TabDouble)
+;
+; DESCRIPTION :
+;    La fonction prend deux flottants à double précision et les soustrait
+;
+; ENTRÉES :
+;    tableau: Tableau des flottants à double précision à additionner
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la soustraction en flottants à double précision
 
 _SubFlottant64bits:
 	.asmfunc
