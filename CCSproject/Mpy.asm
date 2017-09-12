@@ -90,7 +90,7 @@ _MpyFlottant64bits
 	LDDW *A4[1], A9:A8
 	NOP 4
 
-	MPYDP A7:A6, A9:A8, A5:A4
+	MPYDP A7:A6, A9:A8, A5:A4 ;Multipy two 32bits into one 64bits
 	NOP 9
 
 	.endasmfunc
