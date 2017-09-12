@@ -22,9 +22,6 @@ _SubEntierNonSigne32bits:
 _SubEntierSigne32bits:
 	.asmfunc
 
-	;Mask that is meant to set the CSR SAT bit to 0
-	MVKL 0x0000FDFF, B7
-	MVKL 0x0000FDFF, B7
 
 	;Load the data from memory
 	LDW *A4, A6
@@ -32,6 +29,9 @@ _SubEntierSigne32bits:
 	NOP 4
 
 	SSUB A6, A8, A4
+
+	MVKL 0xFFFFFDFF, B7;Mask that is meant to set the CSR SAT bit to 0
+	MVKH 0xFFFFFDFF, B7
 	MVC CSR, B5 ;Save the CSR's state
 	AND B5, B7, B5 ;Apply a mask to set the SAT bit to 0
 	MVC B5, CSR
