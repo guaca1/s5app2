@@ -10,7 +10,7 @@
 ; Revision :
 ;
 ; PROTOTYPE DE FONCTION :
-;    int AddEntierNonSigne32bits(int *TabDonnees)
+;    int SubEntierNonSigne32bits(unsigned int* TabIntNoS)
 ;
 ; DESCRIPTION :
 ;    La fonction prend des entiers 32-bit non signees en entree et les soustrait.

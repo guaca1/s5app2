@@ -4,9 +4,27 @@
 	.def _MpyFlottant64bits
 
 
-
-	.data
-
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;   unsigned long long MpyEntierNonSigneOp32bitsRes64bits(unsigned int* TabIntNoS)
+;
+; DESCRIPTION :
+;    Multiplication de deux entiers non signes, avec un resultat sur 64 bits.
+;
+; ENTRÉES :
+;    tableau: Tableau des entiers sur 32-bit non signes a multiplier
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la multiplication sur 64-bit en valeur entiere non signee
 
 _MpyEntierNonSigneOp32bitsRes64bits
 	.asmfunc
@@ -48,6 +66,28 @@ _MpyEntierNonSigneOp32bitsRes64bits
 	NOP 5
 	 .endasmfunc
 
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;   long long MpyEntierSigneOp32bitsRes64bits(int* TabIntS);
+;
+; DESCRIPTION :
+;    Multiplication de deux entiers signes, avec un resultat sur 64 bits.
+;
+; ENTRÉES :
+;    tableau: Tableau des entiers sur 32-bit signes a multiplier
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la multiplication sur 64-bit en valeur entiere signee
+
 _MpyEntierSigneOp32bitsRes64bits
 	.asmfunc
 
@@ -65,23 +105,70 @@ _MpyEntierSigneOp32bitsRes64bits
 
 	.endasmfunc
 
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;   long long MpyFractionnaireOp32bitsRes64bits_Q724_Q1516(int* TabIntS)
+;
+; DESCRIPTION :
+;    Multiplication de deux fractionnaires (Q7.24 et Q15.16) signes, avec un resultat sur 64 bits.
+;
+; ENTRÉES :
+;    tableau: Tableau des fractionnaires en représentation entiere sur 32-bit signes a multiplier (Dans l'ordre : Q7.24 et Q15.16)
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la multiplication sur 64-bit en valeur entiere signee de format Q22.41
+
 _MpyFractionnaireOp32bitsRes64bits_Q724_Q1516
 	.asmfunc
 	; Load the two operands
-	LDW *A4++, A6
-	NOP 4
-	LDW *A4, A8
+	LDW *A4, A6
+	LDW *A4[1], A8
 	NOP 4
 
 	MPYID A6, A8, A5:A4 ;Multipy two 32bits into one 64bits
 	NOP 9
 
+	;Shift left by 1
+	EXTU A4, 0, 31, A6 ;Extract the MSB of A4, so it is not lost when the shift occurs
 	SHL A5, 1, A5
 	SHL A4, 1, A4
+	ADD A5, A6, A5 ;We add A4's MSB as A5's LSB
 
 	B B3
 	NOP 5
 	.endasmfunc
+
+
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;   double MpyFlottant64bits(double* TabDouble)
+;
+; DESCRIPTION :
+;    Multiplication de deux flottants à double précision
+;
+; ENTRÉES :
+;    tableau: Tableau des flottants à double precision a multiplier
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la multiplication sur 64-bit en flottant double precision
 
 _MpyFlottant64bits
 	.asmfunc
@@ -90,7 +177,7 @@ _MpyFlottant64bits
 	LDDW *A4[1], A9:A8
 	NOP 4
 
-	MPYDP A7:A6, A9:A8, A5:A4 ;Multipy two 32bits into one 64bits
+	MPYDP A7:A6, A9:A8, A5:A4 ;Multipy two 64bits
 	NOP 9
 
 	.endasmfunc

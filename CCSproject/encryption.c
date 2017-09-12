@@ -13,11 +13,11 @@
     est déterminé a l'aide de la variable nbTours.
 
  ENTRÉES :
-    tableau: Tableau de 8 entiers sur 32-bit
+
 
 
  ENTRÉES/SORTIES :
-
+    tableau: Tableau de 8 entiers sur 32-bit
 
  SORTIES :
 

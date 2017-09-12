@@ -2,6 +2,27 @@
 	.def _DivSubc
 	.def _DivFlottant32bits
 
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;    unsigned int DivIncrementation(unsigned int* TabIntNoS);
+;
+; DESCRIPTION :
+;    Division de deux entiers non signes par incrementation. Un arrondissement est effectue si le resultat est une fraction
+;
+; ENTRÉES :
+;    tableau: Tableau des entiers sur 32-bit non signes a diviser
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la division sur 32-bit en valeur entiere non signee
 
 _DivIncrementation:
 	.asmfunc
@@ -44,6 +65,29 @@ ENDDIV1:
 	B B3
 	NOP 5
 	.endasmfunc
+
+
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;    unsigned int DivSubc(unsigned int* TabIntNoS);
+;
+; DESCRIPTION :
+;    Division de deux entiers non signes avec la fonction SUBC. Un arrondissement est effectue si le resultat est une fraction
+;
+; ENTRÉES :
+;    tableau: Tableau des entiers sur 32-bit non signes a diviser
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la division sur 32-bit en valeur entiere non signee
 
 _DivSubc:
 	.asmfunc
@@ -90,6 +134,27 @@ ENDDIV2:
 	.endasmfunc
 
 
+; div.asm
+;
+; Créateur :   HD - DDF - FLF
+; Date :     10 septembre 2017
+; Revision :
+;
+; PROTOTYPE DE FONCTION :
+;    float DivFlottant32bits(float* TabFloat);
+;
+; DESCRIPTION :
+;    Division de deux flottants 32 bits. Une multiplication de la reciproque est utilisee.
+;
+; ENTRÉES :
+;    tableau: Tableau des flottants 32-bit a diviser
+;
+;
+; ENTRÉES/SORTIES :
+;
+;
+; SORTIES :
+;	Resultat de la division sur 32-bit en valeur flottante
 
 _DivFlottant32bits:
 	.asmfunc

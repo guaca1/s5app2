@@ -34,7 +34,7 @@ _EncrypterDonnees
 
 	;Save the context of the AMR
 	MVC AMR, B0
-	STW B15++[2], B0
+	STW B0, *B15++[2]
 
 	MVKL nbTours,B1
 	MVKH nbTours,B1
@@ -65,7 +65,7 @@ LOOPE: ;Loop servant a encrypter
 	[B2] B LOOPE
 	NOP 5
 
-	LDW --B15[2], B0
+	LDW *--B15[2], B0
 	NOP 4
 	MVC B0, AMR
 
