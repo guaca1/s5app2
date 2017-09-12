@@ -85,7 +85,7 @@ void obtenirOperation(int * liste)
 	printf("1. + \r\n");
 	printf("2. - \r\n");
 	printf("3. * \r\n");
-	printf("4. %%\r\n");
+	printf("4. \\\r\n");
 	printf("5. Encrypter \r\n");
 	scanf("%d", liste);
 	
@@ -186,8 +186,8 @@ void analyserListe(int* liste, unsigned int *TabIntNoS, int *TabIntS, float *Tab
             else if(choix == 22)    //entier 32 bits
             {
                 choisirOperandesIntS(TabIntS);
-                int resultat = MpyEntierSigneOp32bitsRes64bits(TabIntS);
-                printf("Resultat : %d\r\n", resultat);
+                long long resultat = MpyEntierSigneOp32bitsRes64bits(TabIntS);
+                printf("Resultat : %lld\r\n", resultat);
             }
             else if(choix == 32)    //fractionnaire 32 bits
             {

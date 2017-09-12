@@ -92,8 +92,7 @@ _MpyEntierSigneOp32bitsRes64bits
 	.asmfunc
 
 	; Load the two operands
-	LDW *A4++, A6
-	NOP 4
+	LDW *A4[1], A6
 	LDW *A4, A8
 	NOP 4
 
@@ -179,5 +178,8 @@ _MpyFlottant64bits
 
 	MPYDP A7:A6, A9:A8, A5:A4 ;Multipy two 64bits
 	NOP 9
+
+	B B3
+	NOP 5
 
 	.endasmfunc
